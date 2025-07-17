@@ -1383,6 +1383,7 @@ class Parser {
     this.functionDepth = 0;
     this.classDepth = 0;
     this.token = nil;
+    this.inInitializer = false;
     this.scanner = Scanner();
     this.next();
   }
