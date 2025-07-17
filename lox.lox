@@ -1608,10 +1608,11 @@ class Parser {
     this.consume(LEFT_BRACE, "Expect '{' before " + kind + " body.");
 
     this.functionDepth = this.functionDepth + 1;
+    var inInit = this.inInitializer;
     this.inInitializer = kind == "method" and name.value == "init";
     var body = this.block();
     this.functionDepth = this.functionDepth - 1;
-    this.inInitializer = false;
+    this.inInitializer = inInit;
 
     return Function(name.value, parameters, body);
   }
